@@ -1,0 +1,137 @@
+input_config:
+  source_type: csv
+  csv_file_path: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories/Record_Lists/location_B_record_overview.csv
+  source_path: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories/Example_Videos/Location_B/
+  max_video_duration: '600'
+  filename: Location_B
+database_config:
+  measurementID: 10
+  sensorID: 20001
+videoprocessing_config:
+  calibration_config:
+    calibration_matrix_file: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories/Calibration_Data/Location_B_calibrationMatrix.xml
+    calibration_faces_file: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories/Calibration_Data/Location_B_roadsurfaceTriangulationFaces.csv
+    calibration_points_file: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories/Calibration_Data/Location_B_roadsurfaceTriangulationPoints.csv
+    calibration_type: Delaunay triangulation
+  detection_config:
+    detector: Monocular3DTorch
+    model_path: /data/Arnd/paper_conflict_detection/Experiments/Detection/Model/yolov7-tiny_cls_7_IDetectMon3D_ISAC_ALL_Extended.pt
+    score_threshold: 0.25
+    nms_iou_threshold: 0.65
+    image_size: 640
+    object_size_config: /data/Arnd/paper_conflict_detection/Experiments/Detection/object_size_config.yaml
+  detection_zone_config:
+    enabled: true
+    zones:
+    - id: 1
+      name: Zone_1
+      vertices:
+      - - 635
+        - 475
+      - - 634
+        - 6
+      - - 394
+        - 6
+      - - 7
+        - 202
+      - - 6
+        - 475
+      - - 635
+        - 475
+  matching_config:
+    weight_factor_class_consistency: 0.5
+    cost_thresholds:
+      motorcycle: 7.5
+      car: 9
+      truck: 9
+      bus: 9
+      person: 2.5
+      bicycle: 5
+      e-scooter: 5
+  track_lifecycle_config:
+    track_initiation_threshold: 3
+    track_termination_threshold: 10
+  plotting_config:
+    plotWorldOutput: false
+    colors:
+      motorcycle:
+      - 0
+      - 97
+      - 101
+      car:
+      - 0
+      - 84
+      - 159
+      bus:
+      - 204
+      - 7
+      - 30
+      bicycle:
+      - 246
+      - 168
+      - 0
+      person:
+      - 87
+      - 171
+      - 39
+      truck:
+        - 227
+        - 0
+        - 102
+      e-scooter:
+      - 97
+      - 33
+      - 88
+  track_filter_config:
+    max_time_without_detection: 3
+    min_duration: 2
+    min_track_length: 5
+    min_share_detected: 20
+    max_time_without_detection_remove: 3
+    early_not_detected_threshold: '0.33'
+    max_early_not_detected_duration: '0.15'
+    max_duration_outside_det_zone: '0.5'
+  trajectory_enhancer_config:
+    initial_min_share_detected: 0.2
+    initial_min_duration: 0.5
+    smoothing_kernel: 10
+    track_split_yaw_threshold: 45
+    track_split_pos_threshold: 2
+    time_thresh_matching: 1.5
+    final_min_share_detected: 0.5
+    final_min_duration: 2
+    final_min_distance: 5
+    finral_yaw_fluctuation: 3.2
+conflict_config:
+  conflict_indicator:
+    PET: 1.5
+  buffer_duration: 20
+  create_output_images: false
+  create_output_video: false
+  save_csv: true
+  save_database: false
+stream_config:
+  host: 137.226.169.237
+  port: 8051
+trajectory_saver_config:
+  save_csv: true
+  save_database: false
+cluster_config:
+  cluster_algorithm: DBSCAN
+  cost_threshold: 0.2
+  cost_feature: key_points
+  class_wise: true
+transformer_config:
+  embeded_dim: 128
+  n_heads: 4
+  n_layers: 4
+  n_classes: 7
+  max_len: 1200
+  model_path: /data/Arnd/paper_conflict_detection/Experiments/TrajectoryTransformer/20250522T144316_Training_Trajectory_Transformer/best_model.pth
+  lstm_model_path: /data/Arnd/paper_conflict_detection/Experiments/TrajectoryTransformer/20251007T130538_Training_Trajectory_LSTM/best_model.pth
+output_config:
+  output_folder: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories_test/Location_B_Trajectories_and_Conflicts
+output_video_config:
+  create_output_images: false
+  create_output_video: false
+  Prefix_Filename: All_frames_

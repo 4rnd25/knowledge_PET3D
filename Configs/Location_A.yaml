@@ -1,0 +1,145 @@
+input_config:
+  source_type: csv
+  csv_file_path: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories_test/Record_Lists/location_A_record_overview.csv
+  source_path: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories_test/Example_Videos/Location_A/
+  max_video_duration: '600'
+  filename: Location_A
+database_config:
+  measurementID: 10
+  sensorID: 20001
+videoprocessing_config:
+  calibration_config:
+    calibration_matrix_file: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories_test/Calibration_Data/Location_A_calibrationMatrix.xml
+    calibration_faces_file: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories_test/Calibration_Data/Location_A_roadsurfaceTriangulationFaces.csv
+    calibration_points_file: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories_test/Calibration_Data/Location_A_roadsurfaceTriangulationPoints.csv
+    calibration_type: Delaunay triangulation
+  detection_config:
+    detector: Monocular3DTorch
+    model_path: /data/Arnd/paper_conflict_detection/Experiments/Detection/Model/yolov7-tiny_cls_7_IDetectMon3D_ISAC_ALL_Extended.pt
+    score_threshold: 0.25
+    nms_iou_threshold: 0.65
+    image_size: 640
+    object_size_config: /data/Arnd/paper_conflict_detection/Experiments/Detection/object_size_config.yaml
+  detection_zone_config:
+    enabled: true
+    zones:
+    - id: 1
+      name: Zone_1
+      vertices:
+      - - 597
+        - 155
+      - - 389
+        - 119
+      - - 342
+        - 114
+      - - 204
+        - 116
+      - - 58
+        - 132
+      - - 9
+        - 161
+      - - 7
+        - 473
+      - - 634
+        - 474
+      - - 635
+        - 182
+      - - 597
+        - 155
+  matching_config:
+    weight_factor_class_consistency: 0.5
+    cost_thresholds:
+      motorcycle: 7.5
+      car: 9
+      truck: 9
+      bus: 9
+      person: 2.5
+      bicycle: 5
+      e-scooter: 5
+  track_lifecycle_config:
+    track_initiation_threshold: 3
+    track_termination_threshold: 10
+  plotting_config:
+    plotWorldOutput: false
+    colors:
+      motorcycle:
+        - 0
+        - 97
+        - 101
+      car:
+        - 0
+        - 84
+        - 159
+      bus:
+        - 204
+        - 7
+        - 30
+      bicycle:
+        - 161
+        - 16
+        - 53
+      person:
+        - 87
+        - 171
+        - 39
+      truck:
+        - 227
+        - 0
+        - 102
+      e-scooter:
+        - 97
+        - 33
+        - 88
+  track_filter_config:
+    max_time_without_detection: 3
+    min_duration: 2
+    min_track_length: 5
+    min_share_detected: 20
+    max_time_without_detection_remove: 3
+    early_not_detected_threshold: '0.33'
+    max_early_not_detected_duration: '0.15'
+    max_duration_outside_det_zone: '0.5'
+  trajectory_enhancer_config:
+    initial_min_share_detected: 0.2
+    initial_min_duration: 0.5
+    smoothing_kernel: 10
+    track_split_yaw_threshold: 45
+    track_split_pos_threshold: 2
+    time_thresh_matching: 1.5
+    final_min_share_detected: 0.5
+    final_min_duration: 2
+    final_min_distance: 5
+    finral_yaw_fluctuation: 3.2
+conflict_config:
+  conflict_indicator:
+    PET: 1.5
+  buffer_duration: 20
+  create_output_images: false
+  create_output_video: false
+  save_csv: true
+  save_database: false
+stream_config:
+  host: 137.226.169.237
+  port: 8051
+trajectory_saver_config:
+  save_csv: true
+  save_database: false
+cluster_config:
+  cluster_algorithm: DBSCAN
+  cost_threshold: 0.2
+  cost_feature: key_points
+  class_wise: true
+transformer_config:
+  embeded_dim: 128
+  n_heads: 4
+  n_layers: 4
+  n_classes: 7
+  max_len: 1200
+  model_path: /data/Arnd/paper_conflict_detection/Experiments/TrajectoryTransformer/20250522T144316_Training_Trajectory_Transformer/best_model.pth
+  lstm_model_path: /data/Arnd/paper_conflict_detection/Experiments/TrajectoryTransformer/20251007T130538_Training_Trajectory_LSTM/best_model.pth
+output_config:
+  output_folder: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories_test/Location_A_Trajectories_and_Conflicts
+output_video_config:
+  create_output_images: false
+  create_output_video: false
+  Prefix_Filename: All_frames_
