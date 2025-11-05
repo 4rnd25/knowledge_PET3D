@@ -86,8 +86,8 @@ To extract trajectories, run `Videoprocessing/01_main_video_trajectory_extractio
 Arguments: configuration file (`Configurations/*`), `startRecID`, and `endRecID`.
 
 Detection zones can be adapted in `Videoprocessing/DetectionZoneDefinition`.  
-Model weights are located at `Videoprocessing/Detection/projnet_Extended.pt`.  
-Object size configuration is in `Videoprocessing/Detection/object_size_config.yaml`.  
+Model weights are located at `Videoprocessing/Detection/Detectors/projnet_cls_7_IDetectMon3D_ISAC_ALL_Extended.pt`.  
+Object size configuration is in `Videoprocessing/Detection/Detectors/object_size_config.yaml`.  
 Ensure that calibration and road surface paths in the configuration are correctly linked to the dataset.
 
 ---
@@ -134,6 +134,8 @@ To train or evaluate the Transformer or LSTM model for trajectory latent-space r
 
 To reproduce the paper results, split the train and validation sets according to  
 `TrajectoryTransformer/train_file_list.txt` and `TrajectoryTransformer/val_file_list.txt`.
+
+The weights used in the paper can be found in `TrajectoryTransformer`.
 
 ---
 

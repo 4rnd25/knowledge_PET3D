@@ -1,0 +1,30 @@
+# Object size configuration
+objects:
+  motorcycle:
+    length: 1.82 # in meters
+    width: 0.86   # in meters
+    height: 1.54  # in meters
+  car:
+    length: 3.64  # in meters
+    width: 1.82   # in meters
+    height: 1.39  # in meters
+  truck:
+    length: 7.47 # in meters
+    width: 2.59   # in meters
+    height: 2.67  # in meters  
+  bus:
+    length: 13.45 # in meters
+    width: 2.94   # in meters
+    height: 2.70  # in meters
+  person:
+    length: 0.70  # in meters
+    width: 0.68   # in meters
+    height: 1.58 # in meters
+  bicycle:
+    length: 1.65  # in meters
+    width: 0.74   # in meters
+    height: 1.58  # in meters
+  e-scooter:
+    length: 1.27 # in meters
+    width: 0.57   # in meters
+    height: 1.65  # in meters

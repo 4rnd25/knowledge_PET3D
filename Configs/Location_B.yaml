@@ -1,7 +1,7 @@
 input_config:
   source_type: csv
-  csv_file_path: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories/Record_Lists/location_B_record_overview.csv
-  source_path: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories/Example_Videos/Location_B/
+  csv_file_path: /data/Knowledge_PET3D_3D_Traffic_Trajectories/Record_Lists/location_B_record_overview.csv
+  source_path: /data/Knowledge_PET3D_3D_Traffic_Trajectories/Example_Videos/Location_B/
   max_video_duration: '600'
   filename: Location_B
 database_config:
@@ -9,17 +9,17 @@ database_config:
   sensorID: 20001
 videoprocessing_config:
   calibration_config:
-    calibration_matrix_file: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories/Calibration_Data/Location_B_calibrationMatrix.xml
-    calibration_faces_file: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories/Calibration_Data/Location_B_roadsurfaceTriangulationFaces.csv
-    calibration_points_file: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories/Calibration_Data/Location_B_roadsurfaceTriangulationPoints.csv
+    calibration_matrix_file: /data/Knowledge_PET3D_3D_Traffic_Trajectories/Calibration_Data/Location_B_calibrationMatrix.xml
+    calibration_faces_file: /data/Knowledge_PET3D_3D_Traffic_Trajectories/Calibration_Data/Location_B_roadsurfaceTriangulationFaces.csv
+    calibration_points_file: /data/Knowledge_PET3D_3D_Traffic_Trajectories/Calibration_Data/Location_B_roadsurfaceTriangulationPoints.csv
     calibration_type: Delaunay triangulation
   detection_config:
     detector: Monocular3DTorch
-    model_path: /data/Arnd/paper_conflict_detection/Experiments/Detection/Model/yolov7-tiny_cls_7_IDetectMon3D_ISAC_ALL_Extended.pt
+    model_path: /data/knowledge_PET3D/Videoprocessing/Detection/Detectors/projnet_cls_7_IDetectMon3D_ISAC_ALL_Extended.pt
     score_threshold: 0.25
     nms_iou_threshold: 0.65
     image_size: 640
-    object_size_config: /data/Arnd/paper_conflict_detection/Experiments/Detection/object_size_config.yaml
+    object_size_config: /data/knowledge_PET3D/Videoprocessing/Detection/Detectors/object_size_config.yaml
   detection_zone_config:
     enabled: true
     zones:
@@ -127,10 +127,10 @@ transformer_config:
   n_layers: 4
   n_classes: 7
   max_len: 1200
-  model_path: /data/Arnd/paper_conflict_detection/Experiments/TrajectoryTransformer/20250522T144316_Training_Trajectory_Transformer/best_model.pth
-  lstm_model_path: /data/Arnd/paper_conflict_detection/Experiments/TrajectoryTransformer/20251007T130538_Training_Trajectory_LSTM/best_model.pth
+  model_path: /data/knowledge_PET3D/TrajectoryTransformer/20250522T144316_Training_Trajectory_Transformer/best_model.pth
+  lstm_model_path: /data/knowledge_PET3D/TrajectoryTransformer/20251007T130538_Training_Trajectory_LSTM/best_model.pth
 output_config:
-  output_folder: /data/Arnd/Knowledge_PET3D_3D_Traffic_Trajectories_test/Location_B_Trajectories_and_Conflicts
+  output_folder: /data/Knowledge_PET3D_3D_Traffic_Trajectories/Location_B_Trajectories_and_Conflicts
 output_video_config:
   create_output_images: false
   create_output_video: false
