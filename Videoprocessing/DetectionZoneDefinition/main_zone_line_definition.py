@@ -187,7 +187,7 @@ def main(config, config_path, plot_current=False, verbose=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', type=str, default='../Configs/10_20001_Aachen_KrefelderStr_PassStr_2.yaml',
+    parser.add_argument('--config', type=str, default='../Configs/Location_A.yaml',
                         help='Path to the config file')
     parser.add_argument('--plot_current', type=bool, default=True, help='Plot current zone')
     parser.add_argument('--verbose', action='store_true', help='Print debug information')
