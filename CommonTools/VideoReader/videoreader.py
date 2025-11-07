@@ -299,3 +299,10 @@ class VideoReader:
 
     def get_start_time(self):
         return self.start_time
+
+    def get_num_records(self):
+        if self.source_type == "database":
+            return len(self.recordList)
+        elif self.source_type == "csv":
+            return len(self._csv_rows)
+        return 1
