@@ -21,7 +21,7 @@ If you use this code, please cite the paper:
   doi     = {https://doi.org/10.1016/j.eswa.2025.130821},
   url     = {[https://www.sciencedirect.com/science/article/pii/S0957417425044367]}
 }
-
+```
 ---
 
 ## Table of Contents
