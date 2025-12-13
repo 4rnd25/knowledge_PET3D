@@ -3,7 +3,24 @@
 **Repository for the paper:**  
 *Knowledge PET3D: An interpretable framework for 3D near-miss detection in thermal traffic video.*
 
-📄 **Link to paper:** _[to be added]_  
+
+📄 Paper link: [DOI: 10.1016/j.eswa.2025.130821](https://doi.org/10.1016/j.eswa.2025.130821)
+📂 Dataset: https://doi.org/10.17632/tw6ghtv624.1 
+
+📌 Citation
+If you use this code, please cite the paper:
+
+```bibtex
+@Article{PETTIRSCH2025113334,
+  author  = {Arnd Pettirsch and Alvaro Garcia-Hernandez},
+  title   = {Knowledge PET3D: An interpretable framework for 3D near-miss detection in thermal traffic video},
+  journal = {Expert Systems with Applications},
+  year    = {2025},
+  issn    = {0957-4174},
+  pages   = {130821},
+  doi     = {https://doi.org/10.1016/j.eswa.2025.130821},
+  url     = {[https://www.sciencedirect.com/science/article/pii/S0957417425044367]}
+}
 
 ---
 
